@@ -1,6 +1,7 @@
 /* Variáveis de tema do aplicativo */
 @import './theme/variables.scss';
 
+/* Alerta de cláusulas (RF04): deixa a lista legível dentro do ion-alert */
 .alerta-clausulas {
   --max-width: 420px;
 

@@ -23,6 +23,7 @@
             Vigência: {{ acordo.vigencia }} &middot; {{ acordo.tipo }}
           </p>
 
+          <!-- Status em ion-badge: Vigente ou Em negociação -->
           <ion-badge [color]="corStatus(acordo)">{{ acordo.status }}</ion-badge>
         </ion-label>
 

@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Renderização da lista com @for (equivalente ao *ngFor) -->
   @for (noticia of noticias; track noticia.id) {
     <ion-card class="card-noticia" button (click)="abrirNoticia(noticia)">
       <ion-card-header>

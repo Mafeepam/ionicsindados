@@ -1,6 +1,9 @@
 <!-- RF02 — cabeçalho identificando o sindicato -->
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <img src="assets/logo-sindados.png" alt="Logo do SINDADOS-BA" class="logo-toolbar">
+    </ion-buttons>
     <ion-title>SINDADOS-BA</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="sair()" aria-label="Sair">
@@ -11,6 +14,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Mensagem de boas-vindas ao trabalhador associado -->
   <ion-card class="boas-vindas">
     <ion-card-header>
       <ion-card-subtitle>
@@ -26,6 +30,7 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- Indicadores rápidos -->
   <ion-grid class="indicadores">
     <ion-row>
       <ion-col size="4">
@@ -49,6 +54,7 @@
     </ion-row>
   </ion-grid>
 
+  <!-- Botões de acesso rápido (navegação da RF02) -->
   <h2 class="titulo-secao">Acesso rápido</h2>
 
   <ion-button expand="block" (click)="irPara('noticias')">
