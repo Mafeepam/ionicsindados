@@ -2,35 +2,18 @@ import { Injectable } from '@angular/core';
 import { Noticia } from '../models/noticia.model';
 import { Acordo } from '../models/acordo.model';
 
-/**
- * Etapa 2 — Dados Simulados / Mock.
- *
- * Service único que concentra:
- *  - a credencial fixa simulada e a flag booleana `isAutenticado` (RF01 / RF05);
- *  - as notícias sindicais (RF03);
- *  - os ACTs e CCTs (RF04).
- *
- * Não há back-end, banco de dados nem API: tudo vive em arrays em memória.
- */
 @Injectable({ providedIn: 'root' })
 export class DadosService {
-  /** Credencial fixa simulada exigida pelo enunciado. */
   private readonly CREDENCIAL = {
     usuario: 'associado@sindados.org.br',
     senha: '123456',
   };
 
-  /** RF05 — estado de autenticação simulado. */
   private autenticado = false;
 
-  /** Nome exibido na mensagem de boas-vindas da Home. */
   private nomeAssociado = 'Associado(a)';
 
-  // ---------------------------------------------------------------- RF01/RF05
 
-  /**
-   * Valida a credencial simulada. Retorna true quando o login é aceito.
-   */
   login(usuario: string, senha: string): boolean {
     const u = (usuario ?? '').trim().toLowerCase();
     const s = (senha ?? '').trim();
@@ -43,12 +26,9 @@ export class DadosService {
     return ok;
   }
 
-  /** Limpa o estado de autenticação (botão "Sair"). */
   logout(): void {
     this.autenticado = false;
   }
-
-  /** Usado pelo guard de rota para bloquear acesso direto às telas internas. */
   get isAutenticado(): boolean {
     return this.autenticado;
   }
@@ -57,7 +37,6 @@ export class DadosService {
     return this.nomeAssociado;
   }
 
-  // -------------------------------------------------------------------- RF03
 
   private readonly noticias: Noticia[] = [
     {
@@ -111,7 +90,6 @@ export class DadosService {
     return this.noticias;
   }
 
-  // -------------------------------------------------------------------- RF04
 
   private readonly acordos: Acordo[] = [
     {

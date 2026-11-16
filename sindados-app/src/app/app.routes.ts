@@ -1,14 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 
-/**
- * Etapa 1 — Rotas da aplicação.
- *
- * /login              → tela pública de autenticação simulada (RF01)
- * /tabs/home          → área logada, protegida pelo authGuard (RF02/RF05)
- * /tabs/noticias      → lista de notícias sindicais (RF03)
- * /tabs/acordos       → lista de ACTs e CCTs (RF04)
- */
+
 export const routes: Routes = [
   {
     path: 'login',

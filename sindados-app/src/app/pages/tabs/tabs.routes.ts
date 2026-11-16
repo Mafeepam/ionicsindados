@@ -1,9 +1,6 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
-/**
- * RF02 — Rotas filhas da área logada, organizadas dentro das abas (ion-tabs).
- */
 export const tabsRoutes: Routes = [
   {
     path: '',

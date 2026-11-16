@@ -18,10 +18,6 @@ import {
 
 import { DadosService } from '../../services/dados.service';
 
-/**
- * RF02 — Menu de navegação por abas inferiores (ion-tabs) para alternar entre
- * Início, Notícias, ACTs/CCTs e Sair.
- */
 @Component({
   selector: 'app-tabs',
   standalone: true,
@@ -37,10 +33,6 @@ export class TabsPage {
     addIcons({ homeOutline, newspaperOutline, documentTextOutline, logOutOutline });
   }
 
-  /**
-   * RF05 — "Sair": pede confirmação, limpa o estado de autenticação e
-   * redireciona para a tela de login.
-   */
   async sair(): Promise<void> {
     const alerta = await this.alertCtrl.create({
       header: 'Sair do aplicativo',

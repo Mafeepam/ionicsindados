@@ -19,13 +19,6 @@ import { documentTextOutline, timeOutline, eyeOutline } from 'ionicons/icons';
 import { DadosService } from '../../services/dados.service';
 import { Acordo } from '../../models/acordo.model';
 
-/**
- * RF04 — Lista de Acordos e Convenções Coletivas (ACTs e CCTs).
- *
- * Cada item exibe título/empresa, vigência, status em ion-badge
- * (Vigente / Em negociação) e um botão que abre um alerta simples
- * com o resumo das cláusulas principais.
- */
 @Component({
   selector: 'app-acordos',
   standalone: true,
@@ -59,12 +52,10 @@ export class AcordosPage implements OnInit {
     this.acordos = this.dados.getAcordos();
   }
 
-  /** Cor do ion-badge conforme o status do instrumento coletivo. */
   corStatus(acordo: Acordo): string {
     return acordo.status === 'Vigente' ? 'success' : 'warning';
   }
 
-  /** Alerta simples com o resumo das cláusulas principais. */
   async verClausulas(acordo: Acordo): Promise<void> {
     const lista = acordo.clausulas.map((c) => `<li>${c}</li>`).join('');
 
