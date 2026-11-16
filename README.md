@@ -16,7 +16,7 @@ O projeto fica na pasta `sindados-app/`. A partir da raiz do repositório:
 ```bash
 cd sindados-app
 npm install
-npm start            # ou: ionic serve
+npm start
 ```
 
 A aplicação sobe em `http://localhost:4200`.
@@ -29,6 +29,38 @@ A aplicação sobe em `http://localhost:4200`.
 | Senha             | `123456`                      |
 
 Para gerar o build de produção: `npm run build` (saída em `dist/sindados-app`).
+
+---
+
+## Demonstrando em iOS e Android
+
+O app não usa nenhum plugin nativo, então o visual de cada plataforma pode ser
+demonstrado direto no navegador. O Ionic detecta a plataforma automaticamente e
+aplica o visual nativo correspondente.
+
+**Opção 1 — as duas plataformas lado a lado:**
+
+```bash
+npm run lab
+```
+
+Abre o Ionic Lab, que mostra iOS e Android simultaneamente. O CLI do Ionic e o
+`@ionic/lab` já são dependências do projeto, então não é preciso instalar nada
+globalmente.
+
+**Opção 2 — forçar uma plataforma pela URL:**
+
+Com `npm start` rodando, acrescente o parâmetro à URL:
+
+- iOS: `http://localhost:4200/?ionic:mode=ios`
+- Android: `http://localhost:4200/?ionic:mode=md`
+
+Útil em ambientes remotos (GitHub Codespaces, Gitpod), onde os iframes do Ionic
+Lab podem não carregar por causa do redirecionamento de portas.
+
+> **Simulador de iOS exige macOS.** O simulador do iPhone faz parte do Xcode e não
+> roda no Windows. Para um emulador Android real, use o Android Studio com o
+> Capacitor (`ionic cap add android` e `ionic cap run android`).
 
 ---
 
