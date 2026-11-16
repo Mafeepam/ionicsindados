@@ -1,0 +1,82 @@
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  IonContent,
+  IonInput,
+  IonButton,
+  IonItem,
+  IonCard,
+  IonCardContent,
+  IonText,
+  IonIcon,
+  IonNote,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { alertCircleOutline, logInOutline, peopleCircleOutline } from 'ionicons/icons';
+
+import { DadosService } from '../../services/dados.service';
+
+/**
+ * RF01 — Tela de Login (Autenticação Simulada).
+ *
+ * Campos de Matrícula/E-mail e Senha + botão "Entrar".
+ * Valida campos vazios e, em seguida, a credencial fixa simulada.
+ * Em caso de erro exibe a mensagem na própria tela.
+ */
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+  imports: [
+    FormsModule,
+    IonContent,
+    IonInput,
+    IonButton,
+    IonItem,
+    IonCard,
+    IonCardContent,
+    IonText,
+    IonIcon,
+    IonNote,
+  ],
+})
+export class LoginPage {
+  usuario = '';
+  senha = '';
+  erro = '';
+
+  constructor(
+    private readonly dados: DadosService,
+    private readonly router: Router,
+  ) {
+    addIcons({ alertCircleOutline, logInOutline, peopleCircleOutline });
+  }
+
+  /** Limpa o formulário sempre que a tela é reaberta (ex.: depois do "Sair"). */
+  ionViewWillEnter(): void {
+    this.usuario = '';
+    this.senha = '';
+    this.erro = '';
+  }
+
+  login(): void {
+    this.erro = '';
+
+    // 1) Validação simples: campos não podem estar vazios.
+    if (!this.usuario.trim() || !this.senha.trim()) {
+      this.erro = 'Preencha a matrícula/e-mail e a senha para continuar.';
+      return;
+    }
+
+    // 2) Validação contra a credencial fixa simulada.
+    if (!this.dados.login(this.usuario, this.senha)) {
+      this.erro = 'Matrícula/e-mail ou senha inválidos. Tente novamente.';
+      return;
+    }
+
+    // 3) Acesso liberado: navega para a área logada.
+    this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
+  }
+}

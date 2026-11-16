@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Notícias sindicais</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Renderização da lista com @for (equivalente ao *ngFor) -->
+  @for (noticia of noticias; track noticia.id) {
+    <ion-card class="card-noticia" button (click)="abrirNoticia(noticia)">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-icon name="calendar-outline"></ion-icon>
+          {{ noticia.data }}
+        </ion-card-subtitle>
+        <ion-card-title>{{ noticia.titulo }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="resumo">{{ noticia.resumo }}</p>
+
+        <ion-button fill="clear" size="small" (click)="abrirNoticia(noticia)">
+          <ion-icon slot="start" name="reader-outline"></ion-icon>
+          Ler notícia
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  } @empty {
+    <p class="vazio">Nenhuma notícia cadastrada.</p>
+  }
+</ion-content>

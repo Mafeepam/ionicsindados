@@ -1,0 +1,71 @@
+<!-- RF02 — cabeçalho identificando o sindicato -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>SINDADOS-BA</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sair()" aria-label="Sair">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Mensagem de boas-vindas ao trabalhador associado -->
+  <ion-card class="boas-vindas">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-icon name="person-circle-outline"></ion-icon>
+        Bem-vindo(a)
+      </ion-card-subtitle>
+      <ion-card-title>{{ associado }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Acompanhe as notícias da categoria e consulte os Acordos e Convenções
+      Coletivas de Trabalho vigentes dos trabalhadores em Tecnologia da
+      Informação da Bahia.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Indicadores rápidos -->
+  <ion-grid class="indicadores">
+    <ion-row>
+      <ion-col size="4">
+        <div class="indicador">
+          <strong>{{ totalNoticias }}</strong>
+          <span>Notícias</span>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="indicador">
+          <strong>{{ totalAcordos }}</strong>
+          <span>ACTs/CCTs</span>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="indicador">
+          <strong>{{ acordosVigentes }}</strong>
+          <span>Vigentes</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botões de acesso rápido (navegação da RF02) -->
+  <h2 class="titulo-secao">Acesso rápido</h2>
+
+  <ion-button expand="block" (click)="irPara('noticias')">
+    <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+    Notícias sindicais
+  </ion-button>
+
+  <ion-button expand="block" (click)="irPara('acordos')">
+    <ion-icon slot="start" name="document-text-outline"></ion-icon>
+    Acordos e Convenções (ACTs e CCTs)
+  </ion-button>
+
+  <ion-button expand="block" fill="outline" color="medium" (click)="sair()">
+    <ion-icon slot="start" name="log-out-outline"></ion-icon>
+    Sair
+  </ion-button>
+</ion-content>

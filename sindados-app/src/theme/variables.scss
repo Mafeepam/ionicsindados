@@ -1,0 +1,44 @@
+/**
+ * Paleta do aplicativo SINDADOS-BA.
+ * Documentação: https://ionicframework.com/docs/theming/css-variables
+ */
+:root {
+  /* Azul institucional */
+  --ion-color-primary: #11558f;
+  --ion-color-primary-rgb: 17, 85, 143;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0f4b7e;
+  --ion-color-primary-tint: #29669a;
+
+  --ion-color-secondary: #1f8a70;
+  --ion-color-secondary-rgb: 31, 138, 112;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #1b7963;
+  --ion-color-secondary-tint: #35967e;
+
+  --ion-color-success: #17824f;
+  --ion-color-success-rgb: 23, 130, 79;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #147246;
+  --ion-color-success-tint: #2e8f61;
+
+  --ion-color-warning: #b26a00;
+  --ion-color-warning-rgb: 178, 106, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #9d5d00;
+  --ion-color-warning-tint: #ba791a;
+
+  --ion-color-danger: #c0372b;
+  --ion-color-danger-rgb: 192, 55, 43;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #a93026;
+  --ion-color-danger-tint: #c64b40;
+
+  --ion-background-color: #f4f6f8;
+  --ion-background-color-rgb: 244, 246, 248;
+}

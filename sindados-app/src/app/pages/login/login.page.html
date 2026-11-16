@@ -1,0 +1,58 @@
+<ion-content class="login-content">
+  <div class="login-wrapper">
+    <!-- Identificação do sindicato -->
+    <div class="brand">
+      <ion-icon name="people-circle-outline"></ion-icon>
+      <h1>SINDADOS-BA</h1>
+      <p>Sindicato dos Trabalhadores em Tecnologia da Informação da Bahia</p>
+    </div>
+
+    <ion-card class="login-card">
+      <ion-card-content>
+        <h2>Acesso do associado</h2>
+
+        <ion-item lines="full">
+          <ion-input
+            label="Matrícula / E-mail"
+            labelPlacement="floating"
+            type="text"
+            autocomplete="username"
+            placeholder="associado@sindados.org.br"
+            [(ngModel)]="usuario"
+            (keyup.enter)="login()">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-input
+            label="Senha"
+            labelPlacement="floating"
+            type="password"
+            autocomplete="current-password"
+            [(ngModel)]="senha"
+            (keyup.enter)="login()">
+          </ion-input>
+        </ion-item>
+
+        <!-- Mensagem de erro exibida na tela (RF01) -->
+        @if (erro) {
+          <ion-text color="danger">
+            <p class="erro">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              {{ erro }}
+            </p>
+          </ion-text>
+        }
+
+        <ion-button expand="block" class="ion-margin-top" (click)="login()">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>
+          Entrar
+        </ion-button>
+
+        <ion-note class="dica">
+          Credencial de teste: <strong>associado&#64;sindados.org.br</strong> / <strong>123456</strong>
+        </ion-note>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,17 @@
+/* Variáveis de tema do aplicativo */
+@import './theme/variables.scss';
+
+/* Alerta de cláusulas (RF04): deixa a lista legível dentro do ion-alert */
+.alerta-clausulas {
+  --max-width: 420px;
+
+  .alert-message ul {
+    margin: 4px 0 0;
+    padding-left: 20px;
+  }
+
+  .alert-message li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+}

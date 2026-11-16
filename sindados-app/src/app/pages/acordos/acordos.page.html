@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Acordos e Convenções</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-note class="intro">
+    Instrumentos coletivos (ACTs e CCTs) disponíveis para consulta.
+    Toque em um item para ver as cláusulas principais.
+  </ion-note>
+
+  <ion-list lines="full" class="lista-acordos">
+    @for (acordo of acordos; track acordo.id) {
+      <ion-item button detail="false" (click)="verClausulas(acordo)">
+        <ion-icon slot="start" name="document-text-outline" color="primary"></ion-icon>
+
+        <ion-label class="ion-text-wrap">
+          <h2>{{ acordo.titulo }}</h2>
+
+          <p class="vigencia">
+            <ion-icon name="time-outline"></ion-icon>
+            Vigência: {{ acordo.vigencia }} &middot; {{ acordo.tipo }}
+          </p>
+
+          <!-- Status em ion-badge: Vigente ou Em negociação -->
+          <ion-badge [color]="corStatus(acordo)">{{ acordo.status }}</ion-badge>
+        </ion-label>
+
+        <ion-button slot="end" fill="clear" size="small" (click)="verClausulas(acordo)">
+          <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    } @empty {
+      <ion-item lines="none">
+        <ion-label class="ion-text-center">Nenhum instrumento cadastrado.</ion-label>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>
