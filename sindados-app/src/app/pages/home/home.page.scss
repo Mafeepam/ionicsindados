@@ -8,6 +8,17 @@
 .boas-vindas {
   margin: 0 0 16px;
 
+  /*
+   * No modo iOS o Ionic aplica flex-direction: column-reverse ao
+   * ion-card-header, o que inverteria a saudação — "Associado(a)" apareceria
+   * antes de "Bem-vindo(a)". Fixamos a ordem para ficar igual nas duas
+   * plataformas.
+   */
+  ion-card-header {
+    display: flex;
+    flex-direction: column;
+  }
+
   ion-card-subtitle {
     display: flex;
     align-items: center;
