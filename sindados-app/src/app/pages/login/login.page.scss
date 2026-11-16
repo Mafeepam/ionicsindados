@@ -16,8 +16,13 @@
   color: #fff;
   margin-bottom: 20px;
 
-  ion-icon {
-    font-size: 64px;
+  .logo {
+    display: block;
+    width: 84px;
+    height: auto;
+    margin: 0 auto 4px;
+    /* realce suave para destacar a logo sobre o fundo azul */
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
   }
 
   h1 {

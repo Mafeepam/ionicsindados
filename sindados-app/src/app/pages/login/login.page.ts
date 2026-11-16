@@ -13,10 +13,17 @@ import {
   IonNote,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { alertCircleOutline, logInOutline, peopleCircleOutline } from 'ionicons/icons';
+import { alertCircleOutline, logInOutline } from 'ionicons/icons';
 
 import { DadosService } from '../../services/dados.service';
 
+/**
+ * RF01 — Tela de Login (Autenticação Simulada).
+ *
+ * Campos de Matrícula/E-mail e Senha + botão "Entrar".
+ * Valida campos vazios e, em seguida, a credencial fixa simulada.
+ * Em caso de erro exibe a mensagem na própria tela.
+ */
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -44,9 +51,10 @@ export class LoginPage {
     private readonly dados: DadosService,
     private readonly router: Router,
   ) {
-    addIcons({ alertCircleOutline, logInOutline, peopleCircleOutline });
+    addIcons({ alertCircleOutline, logInOutline });
   }
 
+  /** Limpa o formulário sempre que a tela é reaberta (ex.: depois do "Sair"). */
   ionViewWillEnter(): void {
     this.usuario = '';
     this.senha = '';
@@ -56,16 +64,19 @@ export class LoginPage {
   login(): void {
     this.erro = '';
 
+    // 1) Validação simples: campos não podem estar vazios.
     if (!this.usuario.trim() || !this.senha.trim()) {
       this.erro = 'Preencha a matrícula/e-mail e a senha para continuar.';
       return;
     }
 
+    // 2) Validação contra a credencial fixa simulada.
     if (!this.dados.login(this.usuario, this.senha)) {
       this.erro = 'Matrícula/e-mail ou senha inválidos. Tente novamente.';
       return;
     }
 
+    // 3) Acesso liberado: navega para a área logada.
     this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
   }
 }

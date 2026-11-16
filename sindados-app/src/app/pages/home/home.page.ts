@@ -28,6 +28,12 @@ import {
 
 import { DadosService } from '../../services/dados.service';
 
+/**
+ * RF02 — Tela Inicial (Home).
+ *
+ * Cabeçalho identificando o SINDADOS-BA, mensagem de boas-vindas ao
+ * trabalhador associado e botões de acesso rápido às demais telas.
+ */
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -83,6 +89,7 @@ export class HomePage {
     this.router.navigateByUrl(`/tabs/${rota}`);
   }
 
+  /** RF05 — limpa a autenticação e volta para o login. */
   async sair(): Promise<void> {
     const alerta = await this.alertCtrl.create({
       header: 'Sair do aplicativo',
