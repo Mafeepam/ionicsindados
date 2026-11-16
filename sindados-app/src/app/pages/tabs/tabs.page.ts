@@ -7,6 +7,7 @@ import {
   IonIcon,
   IonLabel,
   AlertController,
+  NavController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -31,10 +32,25 @@ import { DadosService } from '../../services/dados.service';
 export class TabsPage {
   constructor(
     private readonly dados: DadosService,
-    private readonly router: Router,
+    private readonly navigation: NavController,
     private readonly alertCtrl: AlertController,
+    private readonly router: Router,
   ) {
-    addIcons({ homeOutline, newspaperOutline, documentTextOutline, logOutOutline });
+    addIcons({
+      homeOutline,
+      newspaperOutline,
+      documentTextOutline,
+      logOutOutline,
+    });
+  }
+
+  getTabHref(tab: 'home' | 'noticias' | 'acordos'): string {
+    // Ionic forwards href query parameters when selecting an uncached tab.
+    return this.router.serializeUrl(
+      this.router.createUrlTree(['/tabs', tab], {
+        queryParamsHandling: 'preserve',
+      }),
+    );
   }
 
   /**
@@ -52,7 +68,10 @@ export class TabsPage {
           role: 'confirm',
           handler: () => {
             this.dados.logout();
-            this.router.navigateByUrl('/login', { replaceUrl: true });
+            this.navigation.navigateRoot(['/login'], {
+              replaceUrl: true,
+              queryParamsHandling: 'preserve',
+            });
           },
         },
       ],

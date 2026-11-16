@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import {
   IonContent,
   IonInput,
@@ -11,6 +10,7 @@ import {
   IonText,
   IonIcon,
   IonNote,
+  NavController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { alertCircleOutline, logInOutline } from 'ionicons/icons';
@@ -49,7 +49,7 @@ export class LoginPage {
 
   constructor(
     private readonly dados: DadosService,
-    private readonly router: Router,
+    private readonly navigation: NavController,
   ) {
     addIcons({ alertCircleOutline, logInOutline });
   }
@@ -77,6 +77,9 @@ export class LoginPage {
     }
 
     // 3) Acesso liberado: navega para a área logada.
-    this.router.navigateByUrl('/tabs/home', { replaceUrl: true });
+    this.navigation.navigateRoot(['/tabs', 'home'], {
+      replaceUrl: true,
+      queryParamsHandling: 'preserve',
+    });
   }
 }

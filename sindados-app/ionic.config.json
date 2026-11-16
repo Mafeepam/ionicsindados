@@ -1,5 +1,7 @@
 {
   "name": "sindados-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

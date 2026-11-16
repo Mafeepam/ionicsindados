@@ -17,6 +17,7 @@ import {
   IonRow,
   IonCol,
   AlertController,
+  NavController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -66,6 +67,7 @@ export class HomePage {
   constructor(
     private readonly dados: DadosService,
     private readonly router: Router,
+    private readonly navigation: NavController,
     private readonly alertCtrl: AlertController,
   ) {
     addIcons({
@@ -86,7 +88,9 @@ export class HomePage {
   }
 
   irPara(rota: string): void {
-    this.router.navigateByUrl(`/tabs/${rota}`);
+    this.router.navigate(['/tabs', rota], {
+      queryParamsHandling: 'preserve',
+    });
   }
 
   /** RF05 — limpa a autenticação e volta para o login. */
@@ -101,7 +105,10 @@ export class HomePage {
           role: 'confirm',
           handler: () => {
             this.dados.logout();
-            this.router.navigateByUrl('/login', { replaceUrl: true });
+            this.navigation.navigateRoot(['/login'], {
+              replaceUrl: true,
+              queryParamsHandling: 'preserve',
+            });
           },
         },
       ],

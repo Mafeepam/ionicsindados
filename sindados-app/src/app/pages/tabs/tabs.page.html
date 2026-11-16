@@ -1,16 +1,16 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom" color="primary">
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home" [href]="getTabHref('home')">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Início</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="noticias">
+    <ion-tab-button tab="noticias" [href]="getTabHref('noticias')">
       <ion-icon name="newspaper-outline"></ion-icon>
       <ion-label>Notícias</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="acordos">
+    <ion-tab-button tab="acordos" [href]="getTabHref('acordos')">
       <ion-icon name="document-text-outline"></ion-icon>
       <ion-label>ACTs/CCTs</ion-label>
     </ion-tab-button>

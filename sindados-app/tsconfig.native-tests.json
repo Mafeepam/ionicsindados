@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./.native-tests",
+    "rootDir": ".",
+    "sourceMap": false,
+    "types": []
+  },
+  "include": [
+    "capacitor.config.ts",
+    "src/app/native-config.ts",
+    "src/app/guards/auth.guard.ts"
+  ]
+}

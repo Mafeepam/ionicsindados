@@ -1,19 +1,32 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
-import { provideIonicAngular } from '@ionic/angular/standalone';
+import {
+  provideRouter,
+  withPreloading,
+  PreloadAllModules,
+  RouteReuseStrategy,
+} from '@angular/router';
+import {
+  IonicRouteStrategy,
+  isPlatform,
+  provideIonicAngular,
+} from '@ionic/angular/standalone';
+import { Capacitor } from '@capacitor/core';
 
 import { routes } from './app.routes';
+import { getNativeIonicConfig } from './native-config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Sem a opção `mode`, o Ionic detecta a plataforma automaticamente e
-    // aplica o visual nativo correspondente: iOS no iPhone/iPad e Material
-    // Design no Android. Para forçar um dos dois durante a demonstração,
-    // acrescente ?ionic:mode=ios ou ?ionic:mode=md na URL.
-    //
-    // innerHTMLTemplatesEnabled permite formatar a mensagem do ion-alert
-    // (lista de cláusulas em RF04) com HTML simples e estático.
-    provideIonicAngular({ innerHTMLTemplatesEnabled: true }),
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideIonicAngular({
+      ...getNativeIonicConfig(
+        Capacitor.getPlatform(),
+        typeof window === 'undefined' ? '' : window.location.search,
+        typeof window !== 'undefined' && isPlatform('ios') ? 'ios' : 'md',
+      ),
+      // Agreement clauses are static local demo content sanitized by Ionic.
+      innerHTMLTemplatesEnabled: true,
+    }),
     provideRouter(routes, withPreloading(PreloadAllModules)),
   ],
 };

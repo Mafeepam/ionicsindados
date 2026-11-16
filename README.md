@@ -28,7 +28,32 @@ A aplicação sobe em `http://localhost:4200`.
 | Matrícula/E-mail  | `associado@sindados.org.br`   |
 | Senha             | `123456`                      |
 
-Para gerar o build de produção: `npm run build` (saída em `dist/sindados-app`).
+Para gerar o build de produção: `npm run build` (saída em `dist/sindados-app/browser`).
+
+## Native iOS and Android builds
+
+Capacitor 8 packages the existing Ionic application for iOS and Android. The
+native platform selects Ionic's `ios` or `md` mode, including system fonts,
+component styles, transitions, and touch feedback. Both native projects are
+included in `sindados-app/`; use Node.js 22 for this Angular 18 project.
+
+See the [native development guide](docs/native-development.md) for Xcode setup,
+simulator commands, unsigned simulator builds, Android, and device signing.
+
+After installing the native prerequisites, run from `sindados-app/`:
+
+```bash
+npm ci
+npm run typecheck
+npm run test:native
+npm run native:devices:ios
+npm run native:run:ios
+```
+
+For Android, use `npm run native:run:android`. Each run command builds and syncs
+the bundled web assets before native compilation. No development web server is
+required. `test:native` runs in Node.js without launching a browser; the existing
+`npm test` command remains the browser-based Karma runner.
 
 ---
 
