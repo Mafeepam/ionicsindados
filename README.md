@@ -38,25 +38,29 @@ O app não usa nenhum plugin nativo, então o visual de cada plataforma pode ser
 demonstrado direto no navegador. O Ionic detecta a plataforma automaticamente e
 aplica o visual nativo correspondente.
 
-**Opção 1 — as duas plataformas lado a lado:**
+**Opção 1 — as duas plataformas lado a lado (recomendada):**
 
-```bash
-npm run lab
+Com o servidor rodando (`npm start`), abra:
+
+```
+http://localhost:4200/lab.html
 ```
 
-Abre o Ionic Lab, que mostra iOS e Android simultaneamente. O CLI do Ionic e o
-`@ionic/lab` já são dependências do projeto, então não é preciso instalar nada
-globalmente.
+Mostra o aplicativo duas vezes, em molduras de celular, com o visual de cada
+plataforma. Roda na mesma porta do app, então funciona também em ambientes
+remotos como o GitHub Codespaces, sem configurar redirecionamento extra.
 
 **Opção 2 — forçar uma plataforma pela URL:**
-
-Com `npm start` rodando, acrescente o parâmetro à URL:
 
 - iOS: `http://localhost:4200/?ionic:mode=ios`
 - Android: `http://localhost:4200/?ionic:mode=md`
 
-Útil em ambientes remotos (GitHub Codespaces, Gitpod), onde os iframes do Ionic
-Lab podem não carregar por causa do redirecionamento de portas.
+Útil para projetar em tela cheia durante a apresentação.
+
+> **Sobre o `ionic serve --lab`:** o Ionic Lab (painel oficial, na porta 8200)
+> não inicia junto com o servidor de desenvolvimento do Angular 18, que usa
+> esbuild/Vite. O `ionic serve` normal funciona; apenas o painel não sobe. A
+> página `lab.html` acima substitui esse painel sem depender da integração.
 
 > **Simulador de iOS exige macOS.** O simulador do iPhone faz parte do Xcode e não
 > roda no Windows. Para um emulador Android real, use o Android Studio com o
